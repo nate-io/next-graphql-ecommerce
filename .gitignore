@@ -1,3 +1,9 @@
+# Next.js build dir
+.next
+
+# Keystone build dir
+.keystone
+
 # Logs
 logs
 *.log

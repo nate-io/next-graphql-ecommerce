@@ -1,5 +1,10 @@
-import { config, createSchema } from '@keystone-next/keystone/schema';
 import 'dotenv/config';
+import { createAuth } from '@keystone-next/auth';
+import { config, createSchema } from '@keystone-next/keystone/schema';
+import {
+  withItemData,
+  statelessSessions,
+} from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
 
 const databaseUrl =
@@ -10,24 +15,40 @@ const sessionConfig = {
   secret: process.env.COOKIE_SECRET,
 };
 
-export default config({
-  server: {
-    cors: {
-      origin: [process.env.FRONTEND_URL],
-      credentials: true,
-    },
-  },
-  db: {
-    adapter: 'mongoose',
-    url: databaseUrl,
-    // TODO: add data seeding to db prop
-  },
-  lists: createSchema({
-    // TODO: schema items here
-    User,
-  }),
-  ui: {
-    // TODO: RBAC goes here
-    isAccessAllowed: () => true,
+const { withAuth } = createAuth({
+  listKey: 'User',
+  identityField: 'email',
+  secretField: 'password',
+  initFirstItem: {
+    fields: ['name', 'email', 'password'],
+    // TODO: add initial roles here
   },
 });
+
+export default withAuth(
+  config({
+    server: {
+      cors: {
+        origin: [process.env.FRONTEND_URL],
+        credentials: true,
+      },
+    },
+    db: {
+      adapter: 'mongoose',
+      url: databaseUrl,
+      // TODO: add data seeding to db prop
+    },
+    lists: createSchema({
+      // TODO: schema items here
+      User,
+    }),
+    ui: {
+      // TODO: RBAC goes here
+      isAccessAllowed: ({ session }) => !!session?.data,
+    },
+    session: withItemData(statelessSessions(sessionConfig), {
+      // GraphQL query
+      User: 'id',
+    }),
+  })
+);
