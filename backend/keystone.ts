@@ -6,6 +6,7 @@ import {
   statelessSessions,
 } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
+import { Product } from './schemas/Product';
 
 const databaseUrl =
   process.env.DATABASE_URL || 'mongodb://locahost/keystone-sick-fits-tutorial';
@@ -41,6 +42,7 @@ export default withAuth(
     lists: createSchema({
       // TODO: schema items here
       User,
+      Product,
     }),
     ui: {
       // TODO: RBAC goes here
