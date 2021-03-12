@@ -5,7 +5,7 @@
   "author": "Nate Young",
   "license": "MIT",
   "scripts": {
-    "start": "node --experimental-json-modules buildDataStructure.js"
+    "start": "node --experimental-json-modules fixData.js"
   },
   "type": "module",
   "engines": {

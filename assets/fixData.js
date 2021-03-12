@@ -3,8 +3,7 @@ import { resolve } from 'path';
 import productImagesDb from './productImages.json';
 import { products } from './data.js';
 
-const OUTPUT_FILE = './processedImages.json';
-const TS_OUTPUT_FILE = './newData.ts';
+const OUTPUT_FILE = '../backend/seed-data/data.ts';
 
 const processedImages = productImagesDb.map(product => {
   const {
@@ -26,11 +25,8 @@ const processedImages = productImagesDb.map(product => {
   }
 });
 
-// json output
-fs.writeFileSync(OUTPUT_FILE, JSON.stringify(processedImages, null, 2));
-
 // ts file output
-const file = fs.createWriteStream(TS_OUTPUT_FILE);
+const file = fs.createWriteStream(OUTPUT_FILE);
 
 // write existing function & object
 file.write(`function timestamp() {
