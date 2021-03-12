@@ -36,7 +36,7 @@ file.write(`function timestamp() {
   return new Date(stampy).toISOString();
 }`);
 file.write('\n\n');
-file.write(`export const products = [`);
+file.write(`export const products = `);
 
 // re-map the product images
 const finalizedData = products.map((product, index) => {
@@ -49,7 +49,7 @@ const finalizedData = products.map((product, index) => {
 file.write(JSON.stringify(finalizedData, null, 2));
 
 // complete data structure and close file stream
-file.write(`];`)
+file.write(`;`)
 file.end();
 
 

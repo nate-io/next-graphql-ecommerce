@@ -5,7 +5,7 @@ function timestamp() {
   return new Date(stampy).toISOString();
 }
 
-export const products = [[
+export const products = [
   {
     "name": "Yeti Hondo",
     "description": "soo nice",
@@ -402,4 +402,4 @@ export const products = [[
       }
     }
   }
-]];
+];

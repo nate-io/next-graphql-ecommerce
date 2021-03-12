@@ -8,7 +8,7 @@ import {
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
-import { insertSeedData } from './seed-data';
+import { seedData } from './seed-data';
 
 const databaseUrl =
   process.env.DATABASE_URL || 'mongodb://locahost/keystone-sick-fits-tutorial';
@@ -43,7 +43,7 @@ export default withAuth(
         console.log('Connected to the database!');
 
         if (process.argv.includes('--seed-data')) {
-          await insertSeedData(keystone);
+          await seedData(keystone);
         }
       },
     },
