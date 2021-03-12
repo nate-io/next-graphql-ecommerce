@@ -1,3 +1,9 @@
+# Next.js build dir
+.next
+
+# Keystone build dir
+.keystone
+
 # Logs
 logs
 *.log
@@ -8,6 +14,9 @@ lerna-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# personal notes
+*.notes
 
 # Runtime data
 pids
