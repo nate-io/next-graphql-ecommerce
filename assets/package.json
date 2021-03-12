@@ -1,0 +1,14 @@
+{
+  "name": "sick-fits-asset-management",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Nate Young",
+  "license": "MIT",
+  "scripts": {
+    "start": "node --experimental-json-modules buildDataStructure.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
