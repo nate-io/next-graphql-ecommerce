@@ -1,9 +1,2 @@
-function IndexPage() {
-  return (
-    <div>
-      <p>Hello!</p>
-    </div>
-  );
-}
-
-export default IndexPage;
+// reuse products page for root
+export { default } from './products';
