@@ -31,8 +31,6 @@ export default function Products() {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
   const products = data?.allProducts ? data.allProducts : [];
 
-  console.log(data, error, loading);
-
   if (loading) <p>Loading...</p>;
   if (error) <p>Error: {error.message}</p>;
 
