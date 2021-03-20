@@ -7,8 +7,8 @@ export default function useForm(initial = {}) {
     let { name, type, value } = e.target;
 
     // handle different field types
-    if (type === 'files') {
-      value[0] = e.target.files;
+    if (type === 'file') {
+      [value] = e.target.files;
     }
 
     if (type === 'number') {

@@ -65,7 +65,14 @@
       "wesbos"
     ],
     "rules": {
-      "react/jsx-props-no-spreading": "off"
+      "react/jsx-props-no-spreading": "off",
+      "prefer-destructuring": [
+        "error",
+        {
+          "object": true,
+          "array": false
+        }
+      ]
     }
   },
   "jest": {
