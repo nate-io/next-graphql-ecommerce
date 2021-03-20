@@ -1,19 +1,11 @@
-import styled from 'styled-components';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 
 const fields = {
+  image: '',
   name: '',
   price: 0,
   description: '',
-  image: '',
-};
-
-const fieldTypes = {
-  name: 'text',
-  price: 'number',
-  description: 'textarea',
-  image: 'file',
 };
 
 const placeholders = {
@@ -22,48 +14,62 @@ const placeholders = {
   description: 'Tell users what it is...',
 };
 
-const LabelStyles = styled.label`
-  text-transform: capitalize;
-`;
-
-/**
- * Dynamically generate form fields based on passed config
- * @param {*} inputs to configure & return
- * @param {*} handler change handler (must accomodate text, number, file)
- * @returns React input fields
- */
-const renderInputs = (inputs, handler) => {
-  const keys = Object.keys(inputs);
-
-  // determine on fly if value & placeholder need attached
-  const addVariableAttributes = (key) => ({
-    ...(fieldTypes[key] !== 'file' && {
-      placeholder: placeholders[key],
-      value: inputs[key],
-    }),
-  });
-
-  return keys.map((key) => (
-    <LabelStyles htmlFor={key} key={key}>
-      {key}
-      <input
-        type={fieldTypes[key]}
-        id={key}
-        name={key}
-        onChange={handler}
-        {...addVariableAttributes(key)}
-      />
-    </LabelStyles>
-  ));
-};
-
 export default function CreateProduct() {
   const { inputs, handleChange } = useForm(fields);
 
   return (
-    <Form>
+    <Form
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log(inputs);
+      }}
+    >
       <fieldset>
-        {renderInputs(inputs, handleChange)}
+        <label htmlFor="image">
+          Image
+          <input
+            required
+            type="file"
+            id="image"
+            name="image"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label htmlFor="name">
+          Name
+          <input
+            type="text"
+            id="name"
+            name="name"
+            onChange={handleChange}
+            placeholder={placeholders.name}
+            value={inputs.name}
+          />
+        </label>
+
+        <label htmlFor="price">
+          Price
+          <input
+            type="number"
+            id="price"
+            name="price"
+            onChange={handleChange}
+            placeholder={placeholders.price}
+            value={inputs.price}
+          />
+        </label>
+
+        <label htmlFor="description">
+          Description
+          <textarea
+            id="description"
+            name="description"
+            placeholder={placeholders.description}
+            value={inputs.description}
+            onChange={handleChange}
+          />
+        </label>
 
         <button type="submit">+ Add Product</button>
       </fieldset>
