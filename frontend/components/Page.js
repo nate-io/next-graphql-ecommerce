@@ -55,7 +55,6 @@ function Page({ children }) {
     <div>
       <GlobalStyles />
       <Header />
-      <h2>I'm the Page bro</h2>
       <InnerStyles>{children}</InnerStyles>
     </div>
   );

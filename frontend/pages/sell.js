@@ -1,7 +1,9 @@
+import CreateProduct from '../components/CreateProduct';
+
 function SellPage() {
   return (
     <div>
-      <p>Sales Hello!</p>
+      <CreateProduct />
     </div>
   );
 }
