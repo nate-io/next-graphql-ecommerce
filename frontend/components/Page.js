@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
     --maxWidth: 1000px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
     box-sizing: border-box;
-    font-size: 10px;
+    font-size: 62.5%;
   }
   *, *:before, *:after {
     box-sizing: inherit;
@@ -55,7 +55,6 @@ function Page({ children }) {
     <div>
       <GlobalStyles />
       <Header />
-      <h2>I'm the Page bro</h2>
       <InnerStyles>{children}</InnerStyles>
     </div>
   );
